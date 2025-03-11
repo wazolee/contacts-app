@@ -49,7 +49,9 @@ export class EditContactComponent implements OnInit {
     this.contactsService.getContact(contactId).subscribe((contact) => {
       if (!contact) return;
       this.contactForm.setValue(contact);
+      console.log(this.contactForm.controls.dateOfBirth.value, typeof this.contactForm.controls.dateOfBirth.value);
     });
+
   }
 
   get firstName() {
@@ -63,6 +65,7 @@ export class EditContactComponent implements OnInit {
     this.contactsService.saveContact(this.contactForm.getRawValue()).subscribe({
       next: () => this.router.navigate(['/contacts'])
     });
-    console.log(this.contactForm.value);
+    // console.log(this.contactForm.value);
+    console.log(this.contactForm.controls.dateOfBirth.value, typeof this.contactForm.controls.dateOfBirth.value);
   }
 }
