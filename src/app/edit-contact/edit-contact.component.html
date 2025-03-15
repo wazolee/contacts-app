@@ -2,10 +2,11 @@
   <h1 class="header">
     Edit Contact
   </h1>
-  <form [formGroup]="contactForm" (ngSubmit)="saveContact()">
+  <form [formGroup]="contactForm" (ngSubmit)="saveContact()">    
     <section>
       <nav>Name/Info</nav>
       <div>
+        <con-profile-icon-selector formControlName="icon" />
         <input [class.error]="firstName.invalid && firstName.touched" formControlName="firstName"
           placeholder="First Name" />
         <em *ngIf="firstName.errors?.['required'] && firstName.touched">Please enter a First Name.</em>
@@ -61,8 +62,7 @@
     <section>
       <nav>Notes</nav>
       <div>
-        <textarea placeholder="Notes" rows="5" [class.error]="notes.invalid"
-          formControlName="notes"></textarea>
+        <textarea placeholder="Notes" rows="5" [class.error]="notes.invalid" formControlName="notes"></textarea>
         <em *ngIf="notes.errors?.['restrictedWords']">Restricted words found: {{notes.errors?.['restrictedWords']}}</em>
       </div>
     </section>
